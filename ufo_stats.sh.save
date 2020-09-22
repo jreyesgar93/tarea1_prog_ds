@@ -1,0 +1,30 @@
+#!/bin/bash
+
+
+cat todos.psv| cut -d$'|' -f6|tr -s '[:upper:]' '[:lower:]'| grep -E  -i  "min|hour|sec| hr ">ufo_duration.txt
+
+
+
+
+cat ufo_duration.txt | grep -E -i "min|mins"| awk '{print $1} '| grep  -i '[0-9]\+'| awk '{print $1+1-1}'|sort -n>minutes.txt
+
+
+
+
+cat ufo_duration.txt | grep -E -i "sec"| awk '{print $1} '| grep  -i '[0-9]\+'| awk '{print $1+1-1}'|sort -n| awk '{print $1/60}'>sec.txt
+cat ufo_duration.txt | grep -E -i "hour|hr"| awk '{print $1} '| grep  -i '[0-9]\+'| awk '{print $1+1-1}'|sort -n| awk '{print $1*60}'>hrs.txt
+
+<cat sec.txt minutes.txt hrs.txt| awk 
+'{sum1+=$1}{max=min=$1
+
+
+
+} END{print "promedio: "sum1/NR " minutos"}{print "hola"}{print "minimo"}'
+
+
+rm ufo_duration.txt sec.txt hrs.txt minutes.txt 
+
+
+
+
+

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat todos.psv| cut -d $'|' -f7

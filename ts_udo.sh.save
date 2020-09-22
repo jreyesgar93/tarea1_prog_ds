@@ -1,0 +1,4 @@
+cat todos.psv |awk -F "|" '{print $2}' |head -n 2| cut -d ' ' -f 1#!/bin/bash
+
+
+
